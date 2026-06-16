@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 335718116}
   - component: {fileID: 335718117}
   - component: {fileID: 335718118}
+  - component: {fileID: 335718119}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -225,7 +226,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335718113}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed39a109d1e75f34680773332ea71dbc, type: 3}
   m_Name: 
@@ -235,6 +236,29 @@ MonoBehaviour:
   ShowDelaunay: 1
   ShowVoronoi: 1
   Materiau: 1
+--- !u!114 &335718119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335718113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8934b83af31738d43bcb441cd6aa122b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shape: 1
+  Size: 2
+  RandomPointCount: 50
+  RandomSeed: 100
+  ShowPoints: 0
+  ShowDelaunay: 1
+  ShowVoronoi: 1
+  PointRadius: 1
+  PointColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  DelaunayColor: {r: 1, g: 0.45, b: 0, a: 1}
+  VoronoiColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
