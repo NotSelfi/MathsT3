@@ -149,15 +149,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335718113}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 132399bce0fc79b4a8a9d5de11b2ce9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TargetCube: {fileID: 2048143166}
-  PointCount: 15
+  PointCount: 10
+  RandomSeed: 25
+  PointRadius: 0.1
+  ShowPoints: 1
   ShowDelaunay: 1
   ShowVoronoi: 1
+  HideOriginalObject: 0
+  PointColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  DelaunayColor: {r: 1, g: 0.45, b: 0, a: 1}
+  VoronoiColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &335718115
 Transform:
   m_ObjectHideFlags: 0
@@ -180,7 +187,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335718113}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34364fa367f34694ea34b6a597d669f7, type: 3}
   m_Name: 
@@ -218,7 +225,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335718113}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed39a109d1e75f34680773332ea71dbc, type: 3}
   m_Name: 
