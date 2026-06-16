@@ -180,13 +180,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335718113}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34364fa367f34694ea34b6a597d669f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetObject: {fileID: 0}
-  Materiau: 2
+  TargetObject: {fileID: 2048143166}
+  PointCount: 50
+  RandomSeed: 160
+  HideOriginalObject: 0
+  ShowVoronoiWireframe: 1
+  ShowFragmentCenters: 1
+  WireColor: {r: 1, g: 1, b: 1, a: 1}
+  CenterRadius: 0.04
+  Materiau: 0
 --- !u!114 &335718117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,7 +528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5d3ef390fc1e8c749937f4f70be7770c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
