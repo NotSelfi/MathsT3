@@ -225,16 +225,13 @@ public class DestructionDelaunay : MonoBehaviour
 
         _points.Clear();
 
-        // Récupérer les vertices du mesh
         Mesh mesh = TargetObject.GetComponent<MeshFilter>().sharedMesh;
         Transform t = TargetObject.transform;
 
-        // Dédoublonner les vertices (un cube Unity a des vertices dupliqués)
         var seen = new HashSet<Vector3>();
         foreach (var v in mesh.vertices)
         {
             Vector3 world = t.TransformPoint(v);
-            // Arrondir pour dédoublonner
             Vector3 rounded = new Vector3(
                 Mathf.Round(world.x * 100f) / 100f,
                 Mathf.Round(world.y * 100f) / 100f,
@@ -244,7 +241,6 @@ public class DestructionDelaunay : MonoBehaviour
                 _points.Add(world);
         }
 
-        // Sous-échantillonner si trop de points
         int maxPoints = 20;
         if (_points.Count > maxPoints)
         {
@@ -350,11 +346,9 @@ public class DestructionDelaunay : MonoBehaviour
 
         if (TargetObject == null) { Debug.LogError("Assigne un objet !"); return; }
 
-        // Récupérer les vertices du mesh
         Mesh mesh = TargetObject.GetComponent<MeshFilter>().sharedMesh;
         Transform t = TargetObject.transform;
 
-        // Dédoublonner + convertir en world space
         var seen = new HashSet<Vector3>();
         var points = new List<Vector3>();
         foreach (var v in mesh.vertices)
@@ -368,7 +362,6 @@ public class DestructionDelaunay : MonoBehaviour
                 points.Add(world);
         }
 
-        // Sous-échantillonner si trop de points
         int maxPoints = 20;
         if (points.Count > maxPoints)
         {
@@ -381,13 +374,11 @@ public class DestructionDelaunay : MonoBehaviour
 
         Debug.Log($"Points : {points.Count}");
 
-        // Delaunay
         var tetrahedra = DelaunayVoronoi3D.ComputeDelaunay(points);
         Debug.Log($"Tétraèdres : {tetrahedra.Count}");
 
         if (tetrahedra.Count == 0) { Debug.LogWarning("Pas de tétraèdres !"); return; }
 
-        // Cellules Voronoï = circumcenters par point
         var circumcentersByPoint = new Dictionary<int, List<Vector3>>();
         for (int i = 0; i < points.Count; i++)
             circumcentersByPoint[i] = new List<Vector3>();
@@ -400,13 +391,11 @@ public class DestructionDelaunay : MonoBehaviour
             circumcentersByPoint[tet.d].Add(tet.circumcenter);
         }
 
-        // Fragment par cellule
         for (int i = 0; i < points.Count; i++)
         {
             var cellVerts = circumcentersByPoint[i];
             if (cellVerts.Count < 4) continue;
 
-            // Filtrer outliers
             Vector3 site = points[i];
             var distances = new List<float>();
             foreach (var v in cellVerts)
@@ -456,8 +445,7 @@ public class DestructionDelaunay : MonoBehaviour
             _fragments.Add(go);
         }
 
-        // Cacher l'objet original
-        TargetObject.SetActive(false);
+       // TargetObject.SetActive(false);
 
         Debug.Log($"[{Materiau}] {_fragments.Count} fragments générés");
     }
@@ -485,18 +473,15 @@ public class DestructionDelaunay : MonoBehaviour
             var rb = fragment.GetComponent<Rigidbody>();
             if (rb == null) continue;
 
-            // Détacher le fragment
             rb.isKinematic = false;
             rb.AddExplosionForce(_force, impactPoint, _rayon, 0.5f, ForceMode.Impulse);
             Destroy(fragment, 3f);
 
-            // Recalculer Delaunay + Voronoï sur les fragments restants
             var remainingPoints = new List<Vector3>();
             for (int j = i + 1; j < _fragments.Count; j++)
             {
                 if (_fragments[j] != null)
                 {
-                    // Utiliser le centre du mesh plutôt que transform.position
                     var mf = _fragments[j].GetComponent<MeshFilter>();
                     if (mf != null)
                         remainingPoints.Add(_fragments[j].transform.TransformPoint(mf.mesh.bounds.center));
