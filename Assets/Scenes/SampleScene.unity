@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &335718114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132399bce0fc79b4a8a9d5de11b2ce9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetCube: {fileID: 2048143166}
+  TargetCube: {fileID: 1489838361}
   PointCount: 10
   RandomSeed: 25
   PointRadius: 0.1
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335718113}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8934b83af31738d43bcb441cd6aa122b, type: 3}
   m_Name: 
@@ -568,6 +568,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5d3ef390fc1e8c749937f4f70be7770c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1489838362}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5d3ef390fc1e8c749937f4f70be7770c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1489838366}
   m_SourcePrefab: {fileID: 100100000, guid: 5d3ef390fc1e8c749937f4f70be7770c, type: 3}
 --- !u!1 &1489838361 stripped
 GameObject:
@@ -590,6 +593,19 @@ MonoBehaviour:
   ShowBorders: 1
   ShowSeeds: 1
   GizmoSphereRadius: 0.02
+--- !u!114 &1489838366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489838361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b09dca453d32a4989daaa1d4f82f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DrawVoronoi: 1
 --- !u!1 &1576921422 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 817073ffeda98d34bb49f31c9d56f432, type: 3}
@@ -708,6 +724,7 @@ GameObject:
   - component: {fileID: 2048143169}
   - component: {fileID: 2048143168}
   - component: {fileID: 2048143167}
+  - component: {fileID: 2048143171}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -801,6 +818,93 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2048143171
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048143166}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2135808075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2135808076}
+  - component: {fileID: 2135808077}
+  - component: {fileID: 2135808078}
+  m_Layer: 0
+  m_Name: VoronoiSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2135808076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135808075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6134628, y: -9.135597, z: 20.330168}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2135808077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135808075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0debbaa52a177f9429b5553f1e8d4c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetMesh: {fileID: 2048143169}
+  FragmentMaterial: {fileID: 0}
+  RandomInternalPoints: 30
+  ImpactPoints: 12
+  UseMeshVertices: 1
+  UseImpactLine: 1
+--- !u!114 &2135808078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135808075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e648ef0aeb8a64943b718d2fb8106534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 2135808077}
+  Force: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -812,3 +916,4 @@ SceneRoots:
   - {fileID: 2048143170}
   - {fileID: 1489838360}
   - {fileID: 1261157242}
+  - {fileID: 2135808076}
