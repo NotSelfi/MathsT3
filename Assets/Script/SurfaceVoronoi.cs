@@ -160,8 +160,11 @@ public class SurfaceVoronoi : MonoBehaviour
         }
 
         _vertexToSeed = new int[_vertices.Length];
-        for (int i = 0; i < _vertices.Length; i++)
-            _vertexToSeed[i] = owner.ContainsKey(_canonical[i]) ? owner[_canonical[i]] : 0;
+for (int i = 0; i < _vertices.Length; i++)
+{
+    int o = owner.ContainsKey(_canonical[i]) ? owner[_canonical[i]] : -1;
+    _vertexToSeed[i] = (o < 0) ? 0 : o;
+}
     }
 
     void AssignTriangles()

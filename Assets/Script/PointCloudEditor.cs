@@ -1,27 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Nuage de points cliquable en 3D.
-/// Clic gauche  : ajoute un point.
-/// Clic droit   : supprime le point le plus proche du rayon souris.
-/// Molette      : regle la profondeur de placement (mode Depth).
-/// Touche G     : remplit un nuage 3D aleatoire (test rapide).
-/// Touche C     : efface tout.
-/// </summary>
+
 public class PointCloudEditor : MonoBehaviour
 {
     public enum PlacementMode
     {
-        Surface, // pose sur un collider (Voronoi surfacique : points coplanaires possibles)
-        Depth    // pose le long du rayon camera a 'placeDistance' (vrai nuage 3D)
+        Surface,
+        Depth
     }
 
     [Header("Placement")]
-    public Camera cam;                       // par defaut Camera.main
+    public Camera cam;
     public PlacementMode mode = PlacementMode.Depth;
-    public LayerMask clickMask = ~0;         // surfaces cliquables (mode Surface)
-    public float placeDistance = 5f;         // distance camera->point (mode Depth)
+    public LayerMask clickMask = ~0;
+    public float placeDistance = 5f;
     public float scrollSpeed = 0.5f;
 
     [Header("Test aleatoire (touche G)")]
@@ -43,8 +36,7 @@ public class PointCloudEditor : MonoBehaviour
     }
 
     void Update()
-    {
-        // Molette : ajuste la profondeur en mode Depth
+    { 
         float scroll = Input.mouseScrollDelta.y;
         if (mode == PlacementMode.Depth && Mathf.Abs(scroll) > 0.01f)
             placeDistance = Mathf.Max(0.5f, placeDistance + scroll * scrollSpeed);
@@ -82,7 +74,6 @@ public class PointCloudEditor : MonoBehaviour
             return false;
         }
 
-        // Mode Depth : on pose le long du rayon, a placeDistance de la camera
         point = ray.origin + ray.direction * placeDistance;
         return true;
     }
