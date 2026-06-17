@@ -139,10 +139,9 @@ public class FullVoronoiProjectController : MonoBehaviour
 
             MeshRenderer mr = go.AddComponent<MeshRenderer>();
 
-            if (FragmentMaterial != null)
-                mr.sharedMaterial = FragmentMaterial;
-            else
-                mr.sharedMaterial = new Material(Shader.Find("Standard"));
+            Material mat = new Material(Shader.Find("Standard"));
+            mat.color = Random.ColorHSV(0f, 1f, 0.6f, 1f, 0.7f, 1f);
+            mr.sharedMaterial = mat;
 
             MeshCollider mc = go.AddComponent<MeshCollider>();
             mc.sharedMesh = mesh;
@@ -150,6 +149,8 @@ public class FullVoronoiProjectController : MonoBehaviour
 
             Rigidbody rb = go.AddComponent<Rigidbody>();
             rb.isKinematic = true;
+            rb.mass = 0.2f;
+            rb.drag = 0.1f;
         }
 
         TargetMesh.gameObject.SetActive(false);
